@@ -1,0 +1,21 @@
+2023-10-08 08:30:49 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select u1_0.id,u1_0.email,u1_0.name,u1_0.password from users u1_0 where u1_0.name=? [42104-214]
+2023-10-08 08:33:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select u1_0.id,u1_0.email,u1_0.name,u1_0.password from [*]user u1_0 where u1_0.name=?"; ожидалось "identifier"
+Syntax error in SQL statement "select u1_0.id,u1_0.email,u1_0.name,u1_0.password from [*]user u1_0 where u1_0.name=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.email,u1_0.name,u1_0.password from user u1_0 where u1_0.name=? [42001-214]
+2023-10-08 08:35:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select u1_0.id,u1_0.email,u1_0.name,u1_0.password from [*]user u1_0 where u1_0.name=?"; ожидалось "identifier"
+Syntax error in SQL statement "select u1_0.id,u1_0.email,u1_0.name,u1_0.password from [*]user u1_0 where u1_0.name=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.email,u1_0.name,u1_0.password from user u1_0 where u1_0.name=? [42001-214]
+2023-10-08 08:35:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "select u1_0.id,u1_0.email,u1_0.name,u1_0.password from [*]user u1_0 where u1_0.name=?"; ожидалось "identifier"
+Syntax error in SQL statement "select u1_0.id,u1_0.email,u1_0.name,u1_0.password from [*]user u1_0 where u1_0.name=?"; expected "identifier"; SQL statement:
+select u1_0.id,u1_0.email,u1_0.name,u1_0.password from user u1_0 where u1_0.name=? [42001-214]
+2023-10-08 08:39:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select u1_0.id,u1_0.email,u1_0.name,u1_0.password from users u1_0 where u1_0.name=? [42104-214]
+2023-10-08 08:40:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "USERS" not found (this database is empty); SQL statement:
+select u1_0.id,u1_0.email,u1_0.name,u1_0.password from users u1_0 where u1_0.name=? [42104-214]

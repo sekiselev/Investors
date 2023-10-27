@@ -1,0 +1,66 @@
+{
+  "OilGas": [
+    {
+      "value": "GAZP",
+      "label": "Газпром"
+    },
+    {
+      "value": "LKOH",
+      "label": "Лукойл"
+    },
+    {
+      "value": "NVTK",
+      "label": "Новатэк"
+    },
+    {
+      "value": "SNGS",
+      "label": "Сургутнефтегаз"
+    },
+    {
+      "value": "SNGSP",
+      "label": "Сургутнефтегаз-преференциальные акции"
+    }
+  ],
+  "Finance": [
+    {
+      "value": "SBER",
+      "label": "Сбербанк"
+    },
+    {
+      "value": "VTBR",
+      "label": "ВТБ"
+    },
+    {
+      "value": "MOEX",
+      "label": "Московская биржа"
+    }
+  ],
+  "Retail": [
+    {
+      "value": "MGNT",
+      "label": "Магнит"
+    },
+    {
+      "value": "AFLT",
+      "label": "Аэрофлот"
+    },
+    {
+      "value": "GCHE",
+      "label": "Черкизово Групп"
+    }
+  ],
+  "Metals": [
+    {
+      "value": "GMKN",
+      "label": "ГМК Норникель"
+    },
+    {
+      "value": "ALRS",
+      "label": "АЛРОСА"
+    },
+    {
+      "value": "CHMF",
+      "label": "Северсталь"
+    }
+  ]
+}

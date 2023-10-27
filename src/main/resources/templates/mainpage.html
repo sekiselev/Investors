@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="<http://www.thymeleaf.org>">
+<head>
+    <meta charset="UTF-8">
+    <title>Симулятор фондового рынка</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/stocks.json"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mainPageStyle.css}">
+</head>
+<body>
+<h1>Симулятор фондового рынка</h1>
+
+
+<div class="user-box">
+    <p>Имя пользователя:</p>
+    <div th:text="${user.getName}" class="user-box__name">Иван Иванов</div>
+    <p>Текущий баланс:</p>
+    <div th:text="${user.getAccount().getBalance()}" class="user-box__balance">Баланс: 5000 руб.</div>
+</div>
+<!--начало формы с выбором отрасли-->
+
+<form id="stockForm" action="/get-price-stock" method="get">
+    <label for="industry">Выберите отрасль:</label>
+    <select id="industry" name="industry" required>
+        <option value="выберите отрасль" selected>--Выберите отрасль--</option>
+        <option value="OilGas">Нефтегазовая промышленность</option>
+        <option value="Finance">Финансы</option>
+        <option value="Retail">Розничная торговля</option>
+        <option value="Metals">Добыча металлов</option>
+    </select>
+
+    <label for="stockName">Выберите акцию:</label>
+    <select id="stockName" name="stockName" required onchange="this.form.submit()">
+
+    </select>
+
+    <input type="hidden" name="id" th:value="${param.id}">
+    <button type="submit" id="getStockPriceButton">Посмотреть цену акции</button>
+</form>
+
+
+<div th:if="${stockPrice != null}" id="result">
+    <p>Цена акции <span th:text="${stockName}"></span>: <span th:text="${stockPrice}"></span></p>
+</div>
+
+<form action="/process-transaction" method="post">
+    <label for="quantity">Количество акций:</label>
+    <input type="number" id="quantity" name="quantity" required>
+
+    <!-- Добавлено скрытое поле для цены акции -->
+    <input type="hidden" id="stockPrice" name="stockPrice" th:value="${stockPrice}" value="${stockPrice}"/>
+
+
+    <!-- Добавлено скрытое поле для id, полученного из параметра адреса -->
+    <input type="hidden" id="id" name="id" th:value="${param.id}"/>
+    <input type="hidden" id="stockName_" name="stockName" th:value="${param.stockName}"/>
+
+    <input type="radio" id="buy" name="operation" value="buy" checked>
+    <label for="buy">Купить</label>
+
+    <input type="radio" id="sell" name="operation" value="sell">
+    <label for="sell">Продать</label>
+
+    <button type="submit">Выполнить операцию</button>
+</form>
+
+
+<table id="balance">
+    <tr>
+        <th>Акция</th>
+        <th>Количество</th>
+        <th>Сумма</th>
+        <th>Прибыль</th>
+
+    <tr th:each="entry : ${userStocks?.entrySet()}">
+        <td th:text="${entry?.key}">Название</td>
+        <td th:text="${entry?.value}">Кол-во</td>
+        <td th:text="${userStockSum[entry?.key]}">Сумма</td>
+        <td th:text="${profitLossMap[entry?.key]}">Прибыль</td>
+    </tr>
+    </tr>
+</table>
+
+<script>
+    $(document).ready(function () {
+        let tickers;
+        (async function () {
+            try {
+                const response = await fetch('/stocks.json');
+                const data = await response.json();
+                tickers = data;
+
+                console.log(tickers);
+            } catch (error) {
+                console.error('Ошибка при загрузке JSON файла:', error);
+            }
+        })();
+
+
+        $('#industry').change(function () {
+            var industry = $(this).val();
+
+            var options = tickers[industry];
+            var select = $('#stockName');
+            select.empty();
+            $.each(options, function (index, item) {
+                select.append(new Option(item.label, item.value));
+            });
+        });
+
+    });
+
+
+</script>
+</body>
+</html>
